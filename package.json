@@ -1,0 +1,19 @@
+{
+  "name": "codecept",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rom4ig/codecept.git"
+  },
+  "author": "Rom4ik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rom4ig/codecept/issues"
+  },
+  "homepage": "https://github.com/Rom4ig/codecept#readme"
+}
