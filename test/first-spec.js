@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 
-Feature('UI test');
-Scenario('test something', (I) => {
+Feature('UI and API test');
+Scenario('UI test tut.by. Success sign in', (I) => {
     I.amOnPage('/');
     I.click('.enter');
     I.fillField('login', 'romses2000@mail.ru');
@@ -10,8 +10,7 @@ Scenario('test something', (I) => {
     I.see('Роман Грунковский');
 });
 
-//Feature('API test');
-Scenario('https://reqres.in/', async(I) => {
+Scenario('Api test https://reqres.in/. Get API/USERS', async(I) => {
     const res = await I.sendGetRequest('api/users');
     console.log(res.data);
     expect(res.data.data[0].email).to.eql('george.bluth@reqres.in');
