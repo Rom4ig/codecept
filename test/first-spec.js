@@ -28,4 +28,4 @@ Scenario('Api test https://reqres.in/. Get API/USERS by axios', () => {
             // handle error
             console.log(error);
         });
-})
+});
