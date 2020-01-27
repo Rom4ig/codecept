@@ -7,6 +7,14 @@ const menu = require('../Pages/menuClass');
 Feature('Dollar test');
 let dollar;
 
+BeforeSuite(() => {
+    logger.info('Start dollar test');
+});
+
+AfterSuite(() => {
+    logger.info('End dollar test');
+});
+
 Scenario('The number of chars after the point should be 4.', async (I) => {
     menu.openPage('/');
     dollar = await menu.getElementText(menu.DollarElement);

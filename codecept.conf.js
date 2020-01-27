@@ -1,5 +1,9 @@
 const { setHeadlessWhen } = require('@codeceptjs/configure');
-
+const argv = require('yargs').argv;
+let brow = 'chrome';
+if (argv.browser !== undefined) { //Check browser
+  brow = argv.browser;
+}
 // turn on headless mode when running with HEADLESS=true environment variable
 // HEADLESS=true npx codecept run
 setHeadlessWhen(process.env.HEADLESS);
@@ -10,7 +14,7 @@ exports.config = {
   helpers: {
     WebDriver: {
       url: 'https://www.tut.by/',
-      browser: 'chrome',
+      browser: brow,
       restart: false,
       windowSize: "maximize"
     }

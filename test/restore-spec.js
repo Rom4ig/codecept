@@ -6,6 +6,14 @@ const menu = require('../Pages/menuClass');
 
 Feature('Restore test');
 
+BeforeSuite(() => {
+    logger.info('Start restore test');
+});
+
+AfterSuite(() => {
+    logger.info('End restore test');
+});
+
 
 Scenario('After entering non-existent mail there should be an error.', async (I) => {
     startPage.openPage('/');

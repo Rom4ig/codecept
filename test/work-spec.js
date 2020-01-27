@@ -6,6 +6,14 @@ const menu = require('../Pages/menuClass');
 
 Feature('Job test');
 
+BeforeSuite(() => {
+    logger.info('Start job test');
+});
+
+AfterSuite(() => {
+    logger.info('End job test');
+});
+
 Scenario('Page title should be "Работа в Минске, поиск персонала и публикация вакансий - jobs.tut.by"', async (I) => {
     startPage.openPage('/');
     menu.navigate('Работа');

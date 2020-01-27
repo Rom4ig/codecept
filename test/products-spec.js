@@ -7,6 +7,14 @@ const startPage = require('../Pages/startPage')
 
 Feature('Products test');
 
+BeforeSuite(() => {
+    logger.info('Start products test');
+});
+
+AfterSuite(() => {
+    logger.info('End products test');
+});
+
 
 Scenario('The price of the previous is less than or equal to the price of the subsequent.', async (I) => {
     startPage.openPage('/');

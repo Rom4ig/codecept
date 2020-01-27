@@ -1,11 +1,20 @@
 const expect = require('chai').expect;
 const startPage = require('../Pages/startPage');
 const menu = require('../Pages/menuClass');
+const logger = require('../logger').logger;
 
 Feature('Tut.by login');
 Before((I) => {
     startPage.openPage('/');
     menu.clickElement(menu.LoginButton);
+});
+
+BeforeSuite(() => {
+    logger.info('Start login test');
+});
+
+AfterSuite(() => {
+    logger.info('End login test');
 });
 
 Scenario('When entering only login, the login button should be disabled.', async (I) => {

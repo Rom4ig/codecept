@@ -6,6 +6,14 @@ const menu = require('../Pages/menuClass');
 
 Feature('Weather test');
 
+BeforeSuite(() => {
+    logger.info('Start Weather test');
+});
+
+AfterSuite(() => {
+    logger.info('End Weather test');
+});
+
 Scenario('Menu weather element must be equal with page weather element.', async (I) => {
     startPage.openPage('/');
     let weather = await menu.getElementText(menu.WeatherElement);
