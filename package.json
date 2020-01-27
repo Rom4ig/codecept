@@ -19,6 +19,7 @@
   "dependencies": {
     "chai": "^4.2.0",
     "codeceptjs": "^2.4.1",
+    "log4js": "^6.1.0",
     "webdriver": "^5.18.6"
   },
   "devDependencies": {

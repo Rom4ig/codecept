@@ -11,12 +11,6 @@ exports.config = {
     WebDriver: {
       url: 'https://www.tut.by/',
       browser: 'chrome'
-    },
-    REST: {
-      endpoint: 'https://reqres.in/',
-      onRequest: (request) => {
-        request.headers.auth = '123';
-      }
     }
   },
   include: {
