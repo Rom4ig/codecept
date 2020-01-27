@@ -10,7 +10,8 @@ exports.config = {
   helpers: {
     WebDriver: {
       url: 'https://www.tut.by/',
-      browser: 'chrome'
+      browser: 'chrome',
+      restart: false
     }
   },
   include: {

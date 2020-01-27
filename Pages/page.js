@@ -27,9 +27,11 @@ class Page {
     clearField(field) {
         I.clearField(field);
     }
-    async getAttribute(element, attribute){
+
+    async getAttribute(element, attribute) {
         return await I.grabAttributeFrom(element, attribute);
     }
+
     async getRandomText(length) {
         let rnd = '';
         while (rnd.length < length)
@@ -38,14 +40,11 @@ class Page {
         return rnd.substring(0, length);
     }
 
-    //
-    // async getElementText(elem) {
-    //     return await elem.getText().then((text) => {
-    //         this.logger.trace(`Get message - ${text}`);
-    //         return text;
-    //     });
-    // }
-    //
+
+    async getElementText(locator) {
+        return await I.grabTextFrom(locator);
+    }
+
 
 }
 
