@@ -1,11 +1,11 @@
 const Page = require('./page');
 
 class WeatherPage extends Page {
-    WeatherPageElement = element(by.css('[class="fcurrent-top"]'));
-    TownElement = element(by.css('[class="dotted"]'));
+    WeatherPageElement ='//td[@class="fcurrent-top"]';
+    TownElement = '//a[@class="dotted"]';
 
-    async selectTown(town) {
-        await this.clickElement(element(by.linkText(town)));
+    selectTown(town) {
+        this.clickElement(town);
     }
 }
 

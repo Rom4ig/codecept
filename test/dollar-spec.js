@@ -17,7 +17,7 @@ Scenario('The number of chars after the point should be 4.', async (I) => {
 });
 
 Scenario('Dollar menu element must be equal with dollar page element.', async (I) => {
-    await menu.navigate('Финансы');
+    menu.navigate('Финансы');
     let dollarNBRB = await dollarPage.getElementText(await dollarPage.elementByValueAndCurrency('нацбанк', '1 USD'));
     logger.debug(dollarNBRB);
     dollarNBRB = '$' + dollarNBRB;

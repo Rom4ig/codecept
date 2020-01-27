@@ -5,8 +5,8 @@ class Menu extends Page {
     DollarElement = '.sub-inf';
     LoginButton = '.enter';
 
-    async navigate(text) {
-        await I.click(text);
+    navigate(text) {
+        I.click(text);
     }
 }
 module.exports = new Menu();

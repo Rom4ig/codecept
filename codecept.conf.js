@@ -11,7 +11,8 @@ exports.config = {
     WebDriver: {
       url: 'https://www.tut.by/',
       browser: 'chrome',
-      restart: false
+      restart: false,
+      windowSize: "maximize"
     }
   },
   include: {
