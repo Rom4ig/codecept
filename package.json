@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx codeceptjs run",
-    "posttest": "allure generate allure-results --clean -o allure-report"
+    "pretest": "rd /s /q output",
+    "test": "npx codeceptjs run"
   },
   "repository": {
     "type": "git",
