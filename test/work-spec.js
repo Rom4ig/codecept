@@ -1,11 +1,10 @@
 const expect = require('chai').expect;
-const startPage = require('../Pages/startPage')
+const startPage = require('../Pages/startPage');
 const workPage = require('../Pages/workPage');
 const logger = require('../logger').logger;
 const menu = require('../Pages/menuClass');
 
 Feature('Job test');
-
 
 Scenario('Page title should be "Работа в Минске, поиск персонала и публикация вакансий - jobs.tut.by"', async (I) => {
     startPage.openPage('/');
