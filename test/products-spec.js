@@ -20,6 +20,7 @@ Scenario('The price of the previous is less than or equal to the price of the su
     startPage.openPage('/');
     menu.navigate('Каталог цен');
     catalogPage.clickByCategory('Ноутбуки');
+    productsPage.clickElement(productsPage.CloseElem); //Возможно не нужно, добавил из-за редкого падения в этом месте
     productsPage.clickElement('Сначала дешевые');
     let priceArray = await productsPage.getPrice();
     logger.debug(priceArray);

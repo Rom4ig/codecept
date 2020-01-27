@@ -6,6 +6,7 @@ class ProductsPage extends Page {
     AllManufacturer = 'Все производители';
     SubmitButton = 'Подобрать';
     LaptopsArray = '//div[@class="head"]';
+    CloseElem = '//a[@class="convert_link"]';
 
     async getPrice() {
         let arrayBase = (await this.getElementText(this.PriceBlock));
