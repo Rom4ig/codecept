@@ -62,7 +62,6 @@ module.exports = function () {
             weatherPage.clickElement(weatherPage.TownElement);
             let town = 'Лепель';
             weatherPage.selectTown(town);
-            weatherPage.findElementByText('Лепеле');
         }
     });
 };

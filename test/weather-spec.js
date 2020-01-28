@@ -19,5 +19,6 @@ Scenario('Menu weather element must be equal with page weather element.', async 
     await checkWeather();
 });
 Scenario('Town after selecting on the weather page - "Лепеле"', async (I) => {
-
+    await I.changeWeather();
+    weatherPage.findElementByText('Лепеле');
 });

@@ -1,6 +1,7 @@
 const expect = require('chai').expect;
 const startPage = require('./Pages/startPage');
 const weatherPage = require('./Pages/weatherPage');
+const dollarPage = require('./Pages/dollarPage');
 const menu = require('./Pages/menuClass');
 
 module.exports = {
@@ -32,5 +33,16 @@ module.exports = {
         weatherpage = weatherpage.match(regex)[1];
         weather = weather.replace('−', '-');
         expect(weatherpage).to.equal(weather);
+    },
+
+    checkCountOfCharsAfterPoint: async function(text, equals){
+        let count = text.split('.').pop().length;
+        expect(count).to.equal(equals);
+    },
+
+    checkBuyGreaterThanSell: async function(currency){
+        let buy = await dollarPage.getDollar('купить', currency);
+        let sell = await dollarPage.getDollar('продать', currency);
+        expect(parseFloat(buy)).to.be.gt(parseFloat(sell));
     }
 };

@@ -3,7 +3,7 @@ const dollarPage = require('../Pages/dollarPage');
 const dollarArchivePage = require('../Pages/dollarArchivePage');
 const logger = require('../logger').logger;
 const menu = require('../Pages/menuClass');
-
+const {checkCountOfCharsAfterPoint, checkBuyGreaterThanSell} = require('../checks');
 Feature('Dollar test');
 let dollar;
 
@@ -20,8 +20,7 @@ Scenario('The number of chars after the point should be 4.', async (I) => {
     dollar = await menu.getElementText(menu.DollarElement);
     logger.debug(dollar);
     expect(dollar).to.contains('$');
-    let count = dollarPage.getCountAfterPoint(dollar);
-    expect(count).to.equal(4);
+    await checkCountOfCharsAfterPoint(dollar, 4)
 });
 
 Scenario('Dollar menu element must be equal with dollar page element.', async (I) => {
@@ -33,9 +32,7 @@ Scenario('Dollar menu element must be equal with dollar page element.', async (I
 });
 
 Scenario('Buy dollar value must be greater than sell dollar value.', async (I) => {
-    let dollarBuy = await dollarPage.getDollar('купить', '1 USD');
-    let dollarSell = await dollarPage.getDollar('продать', '1 USD');
-    expect(parseFloat(dollarBuy)).to.be.gt(parseFloat(dollarSell));
+    await checkBuyGreaterThanSell('1 USD');
 });
 
 Scenario('Checking the dollar archive for the date of December 1, 2019. The value of the dollar must be equal to 2.1086 value', async (I) => {
