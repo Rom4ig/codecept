@@ -1,6 +1,4 @@
-const Page = require('./page');
-
-class RestorePage extends Page {
+class RestorePage  {
     RestoreField = '#field-email-login';
     CheckButton = '#recovery-check';
     EmailRecoveryButton = '#email_recovery';

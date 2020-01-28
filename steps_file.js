@@ -7,61 +7,59 @@ const productsPage = require('./Pages/productsPage');
 const catalogPage = require('./Pages/catalogPage');
 const restorePage = require('./Pages/restorePage');
 const weatherPage = require('./Pages/weatherPage');
-
+const getRandomText = require('./util').getRandomText;
 module.exports = function () {
     return actor({
 
         setArchiveDollarDate: async function (startDate, endDate) {
-            await dollarPage.clickElement(await dollarPage.elementByValueAndCurrency('нацбанк', '1 USD'));
+            await this.click(await dollarPage.elementByValueAndCurrency('нацбанк', '1 USD'));
             await dollarArchivePage.setDate(startDate, endDate);
         },
 
         enterRandomTextToField: async function (field, length) {
-            let text = await startPage.getRandomText(length);
-            startPage.enterTextToElement(field, text);
+            let text = await getRandomText(length);
+            this.fillField(field, text);
         },
 
         successLogin: async function () {
-            startPage.enterTextToElement(startPage.LoginField, 'romses2000@mail.ru');
-            startPage.enterTextToElement(startPage.PasswordField, 'qwerty228');
-            startPage.pressKey('Enter');
-            // menu.clickElement(menu.LoginButton);
-            // startPage.clickElement(startPage.ExitButton);
+            this.fillField(startPage.LoginField, 'romses2000@mail.ru');
+            this.fillField(startPage.PasswordField, 'qwerty228');
+            this.pressKey('Enter');
         },
 
         failLogin: async function () {
             await this.enterRandomTextToField(startPage.LoginField, 5);
             await this.enterRandomTextToField(startPage.PasswordField, 5);
-            startPage.pressKey('Enter');
-            menu.clickElement(menu.LoginButton);
+            this.pressKey('Enter');
+            this.click(menu.LoginButton);
         },
 
         arrayOfSortedProducts: async function (category, sort) {
             catalogPage.clickByCategory(category);
-            productsPage.clickElement(productsPage.CloseElem); //Возможно не нужно, добавил из-за редкого падения в этом месте
-            productsPage.clickElement(sort);
+            this.click(productsPage.CloseElem); //Возможно не нужно, добавил из-за редкого падения в этом месте
+            this.click(sort);
             return await productsPage.getPrice();
         },
 
         ProductsByTwoManufacturer: async function(manufacturer1, manufacturer2){
-            productsPage.clickElement(productsPage.AllManufacturer);
+            this.click(productsPage.AllManufacturer);
             productsPage.setManufacturer(manufacturer1);
             productsPage.setManufacturer(manufacturer2);
-            productsPage.clickElement(productsPage.SubmitButton);
-            let laptopsArray = await productsPage.getElementText(productsPage.LaptopsArray);
+            this.click(productsPage.SubmitButton);
+            let laptopsArray = await this.grabTextFrom(productsPage.LaptopsArray);
             laptopsArray.splice(0, 1); //1-ый реклама
             return laptopsArray;
         },
 
         enterEmailToRestore: async function (mail){
-            restorePage.enterTextToElement(restorePage.RestoreField, mail);
-            restorePage.clickElement(restorePage.CheckButton);
+            this.fillField(restorePage.RestoreField, mail);
+            this.click(restorePage.CheckButton);
         },
 
         changeWeather: async function(){
-            weatherPage.clickElement(weatherPage.TownElement);
+            this.click(weatherPage.TownElement);
             let town = 'Лепель';
-            weatherPage.selectTown(town);
+            this.click(town);
         }
     });
 };

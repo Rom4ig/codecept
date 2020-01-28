@@ -1,7 +1,7 @@
-const Page = require('./page');
+
 const I = actor();
 
-class DollarArchivePage extends Page {
+class DollarArchivePage  {
     CalendarFromElement = '#calendar_from';
     CalendarToElement = '#calendar_to';
     SubmitButton = '[value=\'Показать\']';
@@ -23,23 +23,23 @@ class DollarArchivePage extends Page {
     }
 
     async chooseDate(range, day, month, year) {
-        await this.clickElement(await this.elementSelectByTypeAndRange(range, 'y'));
-        await this.clickElement(await this.elementOptionByTypeAndValue(range, 'y', year));
-        await this.clickElement(await this.elementSelectByTypeAndRange(range, 'm'));
-        await this.clickElement(await this.elementOptionByTypeAndValue(range, 'm', month));
-        await this.clickElement(await this.dayByRangeAndNumber(range, day));
+        await I.click(await this.elementSelectByTypeAndRange(range, 'y'));
+        await I.click(await this.elementOptionByTypeAndValue(range, 'y', year));
+        await I.click(await this.elementSelectByTypeAndRange(range, 'm'));
+        await I.click(await this.elementOptionByTypeAndValue(range, 'm', month));
+        await I.click(await this.dayByRangeAndNumber(range, day));
     }
 
     async setDate(startDate, endDate) {
-        await this.clickElement(this.CalendarFromElement);
+        await I.click(this.CalendarFromElement);
         await this.chooseDate('from', startDate.getDate(), startDate.getMonth(), startDate.getFullYear());
-        await this.clickElement(this.CalendarToElement);
+        await I.click(this.CalendarToElement);
         await this.chooseDate('to', endDate.getDate(), endDate.getMonth(), endDate.getFullYear());
-        await this.clickElement(this.SubmitButton);
+        await I.click(this.SubmitButton);
     }
 
     async getDollar(bank, date){
-        return await this.getElementText(await this.elementByBankAndDate(bank, date));
+        return await I.grabTextFrom(await this.elementByBankAndDate(bank, date));
     }
 }
 

@@ -16,15 +16,15 @@ AfterSuite(() => {
 });
 
 Scenario('The number of chars after the point should be 4.', async (I) => {
-    menu.openPage('/');
-    dollar = await menu.getElementText(menu.DollarElement);
+    I.amOnPage('/');
+    dollar = await I.grabTextFrom(menu.DollarElement);
     logger.debug(dollar);
     expect(dollar).to.contains('$');
     await checkCountOfCharsAfterPoint(dollar, 4)
 });
 
 Scenario('Dollar menu element must be equal with dollar page element.', async (I) => {
-    menu.navigate('Финансы');
+    I.click('Финансы');
     let dollarNBRB = await dollarPage.getDollar('нацбанк', '1 USD');
     logger.debug(dollarNBRB);
     dollarNBRB = '$' + dollarNBRB;

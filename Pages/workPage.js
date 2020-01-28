@@ -1,6 +1,4 @@
-const Page = require('./page');
-
-class WorkPage extends Page {
+class WorkPage  {
     SearchField = '//input[@data-qa="search-input"]';
      WorkElements = '//div[@data-qa="vacancy-serp__vacancy" or @data-qa="vacancy-serp__vacancy vacancy-serp__vacancy_premium"]';
 }

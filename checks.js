@@ -3,6 +3,7 @@ const startPage = require('./Pages/startPage');
 const weatherPage = require('./Pages/weatherPage');
 const dollarPage = require('./Pages/dollarPage');
 const menu = require('./Pages/menuClass');
+const I = actor();
 
 module.exports = {
     checkSortArray: async function (array) {
@@ -19,28 +20,28 @@ module.exports = {
         expect(length).to.equal(0);
     },
     checkEnterButton: async function () {
-        let hint = await startPage.getAttribute(startPage.EnterButton, 'className');
+        let hint = await I.grabAttributeFrom(startPage.EnterButton, 'className');
         let disabledGET = hint.toString();
         let disabled = 'button auth__enter disabled';
         expect(disabledGET).to.equal(disabled);
     },
 
-    checkWeather: async function (){
-        let weather = await menu.getElementText(menu.WeatherElement);
+    checkWeather: async function () {
+        let weather = await I.grabTextFrom(menu.WeatherElement);
         let regex = /((\+[1-9]{1,2}|-[1-9]{1,2}|0)°)/;
-        menu.clickElement(menu.WeatherElement);
-        let weatherpage = await weatherPage.getElementText(weatherPage.WeatherPageElement);
+        I.click(menu.WeatherElement);
+        let weatherpage = await I.grabTextFrom(weatherPage.WeatherPageElement);
         weatherpage = weatherpage.match(regex)[1];
         weather = weather.replace('−', '-');
         expect(weatherpage).to.equal(weather);
     },
 
-    checkCountOfCharsAfterPoint: async function(text, equals){
+    checkCountOfCharsAfterPoint: async function (text, equals) {
         let count = text.split('.').pop().length;
         expect(count).to.equal(equals);
     },
 
-    checkBuyGreaterThanSell: async function(currency){
+    checkBuyGreaterThanSell: async function (currency) {
         let buy = await dollarPage.getDollar('купить', currency);
         let sell = await dollarPage.getDollar('продать', currency);
         expect(parseFloat(buy)).to.be.gt(parseFloat(sell));

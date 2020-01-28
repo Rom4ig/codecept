@@ -1,4 +1,3 @@
-const expect = require('chai').expect;
 const startPage = require('../Pages/startPage');
 const menu = require('../Pages/menuClass');
 const logger = require('../logger').logger;
@@ -6,8 +5,8 @@ const {checkEnterButton } = require('../checks');
 
 Feature('Tut.by login');
 Before((I) => {
-    startPage.openPage('/');
-    menu.clickElement(menu.LoginButton);
+    I.amOnPage('/');
+    I.click(menu.LoginButton);
 });
 
 BeforeSuite(() => {
@@ -30,10 +29,10 @@ Scenario('When entering only password, the login button should be disabled.', as
 
 Scenario('When set invalid credentials, should be error.', async (I) => {
     await I.failLogin();
-    startPage.findElementByText('Неверное имя пользователя или пароль');
+    I.see('Неверное имя пользователя или пароль');
 });
 
 Scenario('When set valid credentials, should be success sign in.', async (I) => {
     await I.successLogin();
-    startPage.findElementByText('Роман Грунковский');
+    I.see('Роман Грунковский');
 });

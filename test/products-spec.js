@@ -1,10 +1,6 @@
-const expect = require('chai').expect;
-const productsPage = require('../Pages/productsPage');
-const catalogPage = require('../Pages/catalogPage');
 const logger = require('../logger').logger;
-const menu = require('../Pages/menuClass');
-const startPage = require('../Pages/startPage');
 const {checkSortArray, checkWordInAllProducts} = require('../checks');
+
 Feature('Products test');
 
 BeforeSuite(() => {
@@ -17,8 +13,8 @@ AfterSuite(() => {
 
 
 Scenario('The price of the previous is less than or equal to the price of the subsequent.', async (I) => {
-    menu.openPage('/');
-    menu.navigate('Каталог цен');
+    I.amOnPage('/');
+    I.click('Каталог цен');
     let priceArray = await I.arrayOfSortedProducts('Ноутбуки', 'Сначала дешевые');
     logger.debug(priceArray);
     await checkSortArray(priceArray);

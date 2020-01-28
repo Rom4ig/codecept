@@ -1,18 +1,18 @@
-const Page = require('./page');
+const I = actor();
+const logger = require('../logger').logger;
 
-class ProductsPage extends Page {
+class ProductsPage  {
     PriceBlock = '.prices';
     AllManufacturer = 'Все производители';
     SubmitButton = 'Подобрать';
     LaptopsArray = '.head';
     CloseElem = '.convert_link';
-
     async getPrice() {
-        let arrayBase = (await this.getElementText(this.PriceBlock));
+        let arrayBase = (await I.grabTextFrom(this.PriceBlock));
         let array = [];
         let regex = /([0-9]+,[0-9]+) р./;
         arrayBase.splice(0, 1); //1-ый реклама
-        this.logger.trace(`type - ${typeof (arrayBase)}, value - ${arrayBase}`);
+        logger.trace(`type - ${typeof (arrayBase)}, value - ${arrayBase}`);
         for (let item of arrayBase) {
             item = item.match(regex)[1];
             array.push(item);
@@ -21,7 +21,7 @@ class ProductsPage extends Page {
     }
 
     setManufacturer(name) {
-        this.clickElement(`//label[text()[contains(.,'${name}')]]`);
+        I.click(`//label[text()[contains(.,'${name}')]]`);
     }
 }
 

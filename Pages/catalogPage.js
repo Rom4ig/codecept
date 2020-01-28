@@ -1,9 +1,8 @@
-const Page = require('./page');
-
-class CatalogPage extends Page {
+const I = actor();
+class CatalogPage {
 
      clickByCategory(category) {
-        this.clickElement(`//div[@class="category-metro-item"]/div[contains(text(), "${category}")]/../a`)
+        I.click(`//div[@class="category-metro-item"]/div[contains(text(), "${category}")]/../a`)
     }
 }
 

@@ -1,8 +1,6 @@
 const expect = require('chai').expect;
-const startPage = require('../Pages/startPage');
 const workPage = require('../Pages/workPage');
 const logger = require('../logger').logger;
-const menu = require('../Pages/menuClass');
 
 Feature('Job test');
 
@@ -15,17 +13,17 @@ AfterSuite(() => {
 });
 
 Scenario('Page title should be "Работа в Минске, поиск персонала и публикация вакансий - jobs.tut.by"', async (I) => {
-    startPage.openPage('/');
-    menu.navigate('Работа');
+    I.amOnPage('/');
+    I.click('Работа');
     let title = 'Работа в Минске, поиск персонала и публикация вакансий - jobs.tut.by';
     let currentTitle = await I.grabTitle();
     expect(currentTitle).to.equal(title);
 });
 
 Scenario('The word "itechart" is present in all search results.', async (I) => {
-    workPage.enterTextToElement(workPage.SearchField, 'iTechArt');
-    workPage.pressKey('Enter');
-    let array = await workPage.getElementText(workPage.WorkElements);
+    I.fillField(workPage.SearchField, 'iTechArt');
+    I.pressKey('Enter');
+    let array = await I.grabTextFrom(workPage.WorkElements);
     array.forEach(element =>
         expect(element.toLowerCase()).to.contains('itechart'));
 });
