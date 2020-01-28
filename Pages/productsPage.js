@@ -1,5 +1,4 @@
 const Page = require('./page');
-const regex = /([0-9]+,[0-9]+) р./;
 
 class ProductsPage extends Page {
     PriceBlock = '.prices';
@@ -11,6 +10,7 @@ class ProductsPage extends Page {
     async getPrice() {
         let arrayBase = (await this.getElementText(this.PriceBlock));
         let array = [];
+        let regex = /([0-9]+,[0-9]+) р./;
         arrayBase.splice(0, 1); //1-ый реклама
         this.logger.trace(`type - ${typeof (arrayBase)}, value - ${arrayBase}`);
         for (let item of arrayBase) {

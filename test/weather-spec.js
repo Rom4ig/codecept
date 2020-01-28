@@ -3,7 +3,7 @@ const startPage = require('../Pages/startPage')
 const weatherPage = require('../Pages/weatherPage');
 const logger = require('../logger').logger;
 const menu = require('../Pages/menuClass');
-
+const {checkWeather} = require('../checks');
 Feature('Weather test');
 
 BeforeSuite(() => {
@@ -16,9 +16,7 @@ AfterSuite(() => {
 
 Scenario('Menu weather element must be equal with page weather element.', async (I) => {
     startPage.openPage('/');
-    let weather = await I.checkWeather();
-    expect(weather).to.be.true;
-
+    await checkWeather();
 });
 Scenario('Town after selecting on the weather page - "Лепеле"', async (I) => {
 

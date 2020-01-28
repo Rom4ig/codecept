@@ -4,7 +4,7 @@ const catalogPage = require('../Pages/catalogPage');
 const logger = require('../logger').logger;
 const menu = require('../Pages/menuClass');
 const startPage = require('../Pages/startPage');
-const checkSortArray = require('../checks');
+const {checkSortArray, checkWordInAllProducts} = require('../checks');
 Feature('Products test');
 
 BeforeSuite(() => {
@@ -25,7 +25,7 @@ Scenario('The price of the previous is less than or equal to the price of the su
 });
 
 Scenario('The words "ASUS" and "DELL" are present in all search results.', async (I) => {
-    let check = await I.checkWordInAllProductsByTwoManufacturer('ASUS', 'DELL');
-    expect(check).to.be.true;
+    let laptopsArray = await I.ProductsByTwoManufacturer('ASUS', 'DELL');
+    await checkWordInAllProducts(laptopsArray,'ASUS', 'DELL')
 });
 

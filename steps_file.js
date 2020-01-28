@@ -21,13 +21,6 @@ module.exports = function () {
             startPage.enterTextToElement(field, text);
         },
 
-        checkEnterButton: async function () {
-            let hint = await startPage.getAttribute(startPage.EnterButton, 'className');
-            let disabledGET = hint.toString();
-            let disabled = 'button auth__enter disabled';
-            return disabledGET === disabled;
-        },
-
         successLogin: async function () {
             startPage.enterTextToElement(startPage.LoginField, 'romses2000@mail.ru');
             startPage.enterTextToElement(startPage.PasswordField, 'qwerty228');
@@ -50,34 +43,19 @@ module.exports = function () {
             return await productsPage.getPrice();
         },
 
-        checkWordInAllProductsByTwoManufacturer: async function(manufacturer1, manufacturer2){
+        ProductsByTwoManufacturer: async function(manufacturer1, manufacturer2){
             productsPage.clickElement(productsPage.AllManufacturer);
             productsPage.setManufacturer(manufacturer1);
             productsPage.setManufacturer(manufacturer2);
             productsPage.clickElement(productsPage.SubmitButton);
             let laptopsArray = await productsPage.getElementText(productsPage.LaptopsArray);
             laptopsArray.splice(0, 1); //1-ый реклама
-            let length = laptopsArray.length;
-            for (let item of laptopsArray) {
-                if (item.includes('ASUS') || item.includes('DELL'))
-                    length--;
-            }
-            return  length === 0;
+            return laptopsArray;
         },
 
         enterEmailToRestore: async function (mail){
             restorePage.enterTextToElement(restorePage.RestoreField, mail);
             restorePage.clickElement(restorePage.CheckButton);
-        },
-
-        checkWeather: async function (){
-            let weather = await menu.getElementText(menu.WeatherElement);
-            let regex = /((\+[1-9]{1,2}|-[1-9]{1,2}|0)°)/;
-            menu.clickElement(menu.WeatherElement);
-            let weatherpage = await weatherPage.getElementText(weatherPage.WeatherPageElement);
-            weatherpage = weatherpage.match(regex)[1];
-            weather = weather.replace('−', '-');
-            return weatherpage === weather;
         },
 
         changeWeather: async function(){

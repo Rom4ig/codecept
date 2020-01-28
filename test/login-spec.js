@@ -2,6 +2,7 @@ const expect = require('chai').expect;
 const startPage = require('../Pages/startPage');
 const menu = require('../Pages/menuClass');
 const logger = require('../logger').logger;
+const {checkEnterButton } = require('../checks');
 
 Feature('Tut.by login');
 Before((I) => {
@@ -19,14 +20,12 @@ AfterSuite(() => {
 
 Scenario('When entering only login, the login button should be disabled.', async (I) => {
     await I.enterRandomTextToField(startPage.LoginField, 5);
-    let button = await I.checkEnterButton();
-    expect(button).to.be.true;
+    await checkEnterButton();
 });
 
 Scenario('When entering only password, the login button should be disabled.', async (I) => {
     await I.enterRandomTextToField(startPage.PasswordField, 5);
-    let button = await I.checkEnterButton();
-    expect(button).to.be.true;
+    await checkEnterButton();
 });
 
 Scenario('When set invalid credentials, should be error.', async (I) => {
