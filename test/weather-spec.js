@@ -21,9 +21,9 @@ Scenario('Menu weather element must be equal with page weather element.', async 
     menu.clickElement(menu.WeatherElement);
     let weatherpage = await weatherPage.getElementText(weatherPage.WeatherPageElement);
     weatherpage = weatherpage.match(regex)[1];
+    weather = weather.replace('−', '-');
     expect(weatherpage).to.equal(weather);
 });
-
 Scenario('Town after selecting on the weather page - "Лепеле"', async (I) => {
     weatherPage.clickElement(weatherPage.TownElement);
     let town = 'Лепель';
