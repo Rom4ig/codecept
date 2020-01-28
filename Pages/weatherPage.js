@@ -1,8 +1,8 @@
 const Page = require('./page');
 
 class WeatherPage extends Page {
-    WeatherPageElement ='//td[@class="fcurrent-top"]';
-    TownElement = '//a[@class="dotted"]';
+    WeatherPageElement ='.fcurrent-top';
+    TownElement = '.dotted';
 
     selectTown(town) {
         this.clickElement(town);

@@ -1,9 +1,10 @@
 const Page = require('./page');
 const I = actor();
 class DollarArchivePage extends Page {
-    CalendarFromElement = '//div[@id="calendar_from"]';
-    CalendarToElement = '//div[@id="calendar_to"]';
-    SubmitButton = '//input[@class="button small m-blue"]';
+    CalendarFromElement = '#calendar_from';
+    CalendarToElement = '#calendar_to';
+    SubmitButton = '.button small m-blue';
+
     async elementSelectByTypeAndRange(range, type) {
         return `//div[@id="calendar_${range}_popup"]//div/span/select[@data-calendar="${type}"]`
     }

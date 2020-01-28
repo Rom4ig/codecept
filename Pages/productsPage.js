@@ -2,11 +2,11 @@ const Page = require('./page');
 const regex = /([0-9]+,[0-9]+) р./;
 
 class ProductsPage extends Page {
-    PriceBlock = '//div[@class="prices"]';
+    PriceBlock = '.prices';
     AllManufacturer = 'Все производители';
     SubmitButton = 'Подобрать';
-    LaptopsArray = '//div[@class="head"]';
-    CloseElem = '//a[@class="convert_link"]';
+    LaptopsArray = '.head';
+    CloseElem = '.convert_link';
 
     async getPrice() {
         let arrayBase = (await this.getElementText(this.PriceBlock));

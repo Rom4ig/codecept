@@ -20,4 +20,4 @@ exports.logger = {
   warn: str => loggerDefault.warn(str),
   error: str => loggerDefault.error(str),
   fatal: str => loggerDefault.fatal(str)
-}
+};
