@@ -8,6 +8,7 @@ const catalogPage = require('./Pages/catalogPage');
 const restorePage = require('./Pages/restorePage');
 const weatherPage = require('./Pages/weatherPage');
 const getRandomText = require('./util').getRandomText;
+
 module.exports = function () {
     return actor({
 

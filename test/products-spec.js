@@ -1,5 +1,6 @@
 const logger = require('../logger').logger;
 const {checkSortArray, checkWordInAllProducts} = require('../checks');
+const menu = require('../Pages/menuClass');
 
 Feature('Products test');
 
@@ -14,7 +15,7 @@ AfterSuite(() => {
 
 Scenario('The price of the previous is less than or equal to the price of the subsequent.', async (I) => {
     I.amOnPage('/');
-    I.click('Каталог цен');
+    I.click(menu.Catalog);
     let priceArray = await I.arrayOfSortedProducts('Ноутбуки', 'Сначала дешевые');
     logger.debug(priceArray);
     await checkSortArray(priceArray);

@@ -1,6 +1,7 @@
 const expect = require('chai').expect;
 const workPage = require('../Pages/workPage');
 const logger = require('../logger').logger;
+const menu = require('../Pages/menuClass');
 
 Feature('Job test');
 
@@ -14,7 +15,7 @@ AfterSuite(() => {
 
 Scenario('Page title should be "Работа в Минске, поиск персонала и публикация вакансий - jobs.tut.by"', async (I) => {
     I.amOnPage('/');
-    I.click('Работа');
+    I.click(menu.Job);
     let title = 'Работа в Минске, поиск персонала и публикация вакансий - jobs.tut.by';
     let currentTitle = await I.grabTitle();
     expect(currentTitle).to.equal(title);
