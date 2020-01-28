@@ -3,7 +3,7 @@ const I = actor();
 class DollarArchivePage extends Page {
     CalendarFromElement = '#calendar_from';
     CalendarToElement = '#calendar_to';
-    SubmitButton = '.button small m-blue';
+    SubmitButton = '[value=\'Показать\']';
 
     async elementSelectByTypeAndRange(range, type) {
         return `//div[@id="calendar_${range}_popup"]//div/span/select[@data-calendar="${type}"]`
