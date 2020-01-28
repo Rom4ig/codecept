@@ -16,18 +16,10 @@ AfterSuite(() => {
 
 Scenario('Menu weather element must be equal with page weather element.', async (I) => {
     startPage.openPage('/');
-    let weather = await menu.getElementText(menu.WeatherElement);
-    let regex = /((\+[1-9]{1,2}|-[1-9]{1,2}|0)°)/;
-    menu.clickElement(menu.WeatherElement);
-    let weatherpage = await weatherPage.getElementText(weatherPage.WeatherPageElement);
-    weatherpage = weatherpage.match(regex)[1];
-    weather = weather.replace('−', '-');
-    expect(weatherpage).to.equal(weather);
+    let weather = await I.checkWeather();
+    expect(weather).to.be.true;
+
 });
 Scenario('Town after selecting on the weather page - "Лепеле"', async (I) => {
-    weatherPage.clickElement(weatherPage.TownElement);
-    let town = 'Лепель';
-    weatherPage.selectTown(town);
-    let currentTown = await weatherPage.getElementText(weatherPage.TownElement);
-    expect(currentTown).to.equal('Лепеле');
+
 });

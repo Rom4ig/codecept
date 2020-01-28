@@ -1,5 +1,6 @@
 const Page = require('./page');
 const I = actor();
+
 class DollarArchivePage extends Page {
     CalendarFromElement = '#calendar_from';
     CalendarToElement = '#calendar_to';
@@ -36,5 +37,10 @@ class DollarArchivePage extends Page {
         await this.chooseDate('to', endDate.getDate(), endDate.getMonth(), endDate.getFullYear());
         await this.clickElement(this.SubmitButton);
     }
+
+    async getDollar(bank, date){
+        return await this.getElementText(await this.elementByBankAndDate(bank, date));
+    }
 }
+
 module.exports = new DollarArchivePage();
