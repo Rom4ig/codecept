@@ -1,7 +1,7 @@
 class StartPage  {
     LoginField = 'login';
     PasswordField = 'password';
-    EnterButton = '//input[@value="Войти"]';
+    EnterButton = '[value="Войти"]';
     ForgotButton = `не помню`;
 }
 

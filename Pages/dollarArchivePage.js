@@ -7,11 +7,11 @@ class DollarArchivePage  {
     SubmitButton = '[value=\'Показать\']';
 
     async elementSelectByTypeAndRange(range, type) {
-        return `//div[@id="calendar_${range}_popup"]//div/span/select[@data-calendar="${type}"]`
+        return `[id="calendar_${range}_popup"] [data-calendar="${type}"]`
     }
 
     async elementOptionByTypeAndValue(range, type, value) {
-        return `//div[@id="calendar_${range}_popup"]//div/span/select[@data-calendar="${type}"]/option[@value="${value}"]`
+        return `[id="calendar_${range}_popup"] [data-calendar="${type}"] [value="${value}"]`
     }
 
     async elementByBankAndDate(bank, date) {
