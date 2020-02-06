@@ -22,7 +22,10 @@ Scenario('The price of the previous is less than or equal to the price of the su
 });
 
 Scenario('The words "ASUS" and "DELL" are present in all search results.', async (I) => {
-    let laptopsArray = await I.ProductsByTwoManufacturer('ASUS', 'DELL');
+    let manufacturers = [];
+    manufacturers.push('ASUS');
+    manufacturers.push('DELL');
+    let laptopsArray = await I.ProductsByManufacturers(manufacturers);
     await checkWordInAllProducts(laptopsArray,'ASUS', 'DELL')
 });
 

@@ -11,6 +11,7 @@ module.exports = {
             expect(parseFloat((array[i]).replace(',', '.'))).to.gte(parseFloat((array[i - 1]).replace(',', '.')));
         }
     },
+
     checkWordInAllProducts: async function (array, word1, word2) {
         let length = array.length;
         for (let item of array) {
@@ -19,6 +20,7 @@ module.exports = {
         }
         expect(length).to.equal(0);
     },
+
     checkEnterButton: async function () {
         let hint = await I.grabAttributeFrom(startPage.EnterButton, 'className');
         let disabledGET = hint.toString();

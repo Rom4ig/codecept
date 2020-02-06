@@ -7,6 +7,7 @@ class ProductsPage  {
     SubmitButton = 'Подобрать';
     LaptopsArray = '.head';
     CloseElem = '.convert_link';
+
     async getPrice() {
         let arrayBase = (await I.grabTextFrom(this.PriceBlock));
         let array = [];
