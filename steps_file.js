@@ -39,7 +39,8 @@ module.exports = function () {
             catalogPage.clickByCategory(category);
             this.click(productsPage.CloseElem); //Возможно не нужно, добавил из-за редкого падения в этом месте
             this.click(sort);
-            return await productsPage.getPrice();
+            this.click(productsPage.ListIcon, productsPage.Switcher); //Некоторые категории товаров отображаются в другом формате, из-за чего не работают другие локаторы
+            return await productsPage.getPrices();
         },
 
         ProductsByManufacturers: async function (manufacturers) {
