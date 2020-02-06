@@ -1,5 +1,6 @@
 const logger = require('../logger').logger;
 const {checkSortArray, checkWordInAllProducts} = require('../checks');
+const u = require('../checks');
 const menu = require('../Pages/menuClass');
 
 Feature('Products test');

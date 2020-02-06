@@ -58,9 +58,8 @@ module.exports = function () {
             this.click(restorePage.CheckButton);
         },
 
-        changeWeather: async function () {
+        changeWeather: async function (town) {
             this.click(weatherPage.TownElement);
-            let town = 'Лепель';
             this.click(town);
         }
     });

@@ -30,11 +30,11 @@ module.exports = {
 
     checkWeather: async function () {
         let weather = await I.grabTextFrom(menu.WeatherElement);
+        weather = weather.replace('−', '-');
         let regex = /((\+[1-9]{1,2}|-[1-9]{1,2}|0)°)/;
         I.click(menu.WeatherElement);
         let weatherpage = await I.grabTextFrom(weatherPage.WeatherPageElement);
         weatherpage = weatherpage.match(regex)[1];
-        weather = weather.replace('−', '-');
         expect(weatherpage).to.equal(weather);
     },
 
