@@ -3,7 +3,6 @@ const dollarPage = require('../Pages/dollarPage');
 const dollarArchivePage = require('../Pages/dollarArchivePage');
 const logger = require('../logger').logger;
 const menu = require('../Pages/menuClass');
-const {checkCountOfCharsAfterPoint, checkBuyGreaterThanSell} = require('../checks');
 Feature('Dollar test');
 let dollar;
 
@@ -32,7 +31,9 @@ Scenario('Dollar menu element must be equal with dollar page element.', async (I
 });
 
 Scenario('Buy dollar value must be greater than sell dollar value.', async (I) => {
-    expect('1 USD').to.be.buyGreaterThanSell();
+    let buy = await dollarPage.getDollar('купить', `1 USD`);
+    let sell = await dollarPage.getDollar('продать', `1 USD`);
+    expect(parseFloat(buy)).to.gt(parseFloat(sell));
 });
 
 Scenario('Checking the dollar archive for the date of December 1, 2019. The value of the dollar must be equal to 2.1086 value', async (I) => {

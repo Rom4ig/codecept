@@ -1,5 +1,4 @@
 const logger = require('../logger').logger;
-const {checkWordInAllProducts} = require('../checks');
 const menu = require('../Pages/menuClass');
 require('../custom_expect');
 const expect = require('chai').expect;
@@ -26,7 +25,12 @@ Scenario('The words "ASUS" and "DELL" are present in all search results.', async
     let manufacturers = [];
     manufacturers.push('ASUS');
     manufacturers.push('DELL');
+    manufacturers.push('HP');
     let laptopsArray = await I.ProductsByManufacturers(manufacturers);
-    expect(laptopsArray).to.be.includesWords('ASUS', 'DELL');
+    let words = [];
+    words.push('ASUS');
+    words.push('DELL');
+    words.push('HP');
+    expect(laptopsArray).to.be.includesWords(words);
 });
 
