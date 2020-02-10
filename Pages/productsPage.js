@@ -1,5 +1,6 @@
 const I = actor();
 const logger = require('../logger').logger;
+require('../custom_expect');
 
 class ProductsPage  {
     PriceBlock = '.prices';

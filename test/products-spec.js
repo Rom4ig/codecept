@@ -1,8 +1,8 @@
 const logger = require('../logger').logger;
-const {checkSortArray, checkWordInAllProducts} = require('../checks');
-const u = require('../checks');
+const {checkWordInAllProducts} = require('../checks');
 const menu = require('../Pages/menuClass');
-
+require('../custom_expect');
+const expect = require('chai').expect;
 Feature('Products test');
 
 BeforeSuite(() => {
@@ -19,7 +19,7 @@ Scenario('The price of the previous is less than or equal to the price of the su
     I.click(menu.Catalog);
     let priceArray = await I.arrayOfSortedProducts('Ноутбуки', 'Сначала дешевые');
     logger.debug(priceArray);
-    await checkSortArray(priceArray);
+    expect(priceArray).to.be.sortedArray();
 });
 
 Scenario('The words "ASUS" and "DELL" are present in all search results.', async (I) => {
@@ -27,6 +27,6 @@ Scenario('The words "ASUS" and "DELL" are present in all search results.', async
     manufacturers.push('ASUS');
     manufacturers.push('DELL');
     let laptopsArray = await I.ProductsByManufacturers(manufacturers);
-    await checkWordInAllProducts(laptopsArray,'ASUS', 'DELL')
+    expect(laptopsArray).to.be.includesWords('ASUS', 'DELL');
 });
 
