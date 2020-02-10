@@ -7,7 +7,9 @@ class ProductsPage  {
     SubmitButton = 'Подобрать';
     LaptopsArray = '.head';
     CloseElem = '.convert_link';
-    async getPrice() {
+    ListIcon = '[class^="b-icon kupi-icon icon-list_view"]';
+    Switcher = '.switch-tabs';
+    async getPrices() {
         let arrayBase = (await I.grabTextFrom(this.PriceBlock));
         let array = [];
         let regex = /([0-9]+,[0-9]+) р./;

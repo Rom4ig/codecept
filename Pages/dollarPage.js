@@ -1,4 +1,3 @@
-
 const I = actor();
 
 class DollarPage  {

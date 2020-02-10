@@ -39,27 +39,27 @@ module.exports = function () {
             catalogPage.clickByCategory(category);
             this.click(productsPage.CloseElem); //Возможно не нужно, добавил из-за редкого падения в этом месте
             this.click(sort);
-            return await productsPage.getPrice();
+            this.click(productsPage.ListIcon, productsPage.Switcher); //Некоторые категории товаров отображаются в другом формате, из-за чего не работают другие локаторы
+            return await productsPage.getPrices();
         },
 
-        ProductsByTwoManufacturer: async function(manufacturer1, manufacturer2){
+        ProductsByManufacturers: async function (manufacturers) {
             this.click(productsPage.AllManufacturer);
-            productsPage.setManufacturer(manufacturer1);
-            productsPage.setManufacturer(manufacturer2);
+            manufacturers.forEach((manufacturer) =>
+                productsPage.setManufacturer(manufacturer));
             this.click(productsPage.SubmitButton);
             let laptopsArray = await this.grabTextFrom(productsPage.LaptopsArray);
             laptopsArray.splice(0, 1); //1-ый реклама
             return laptopsArray;
         },
 
-        enterEmailToRestore: async function (mail){
+        enterEmailToRestore: async function (mail) {
             this.fillField(restorePage.RestoreField, mail);
             this.click(restorePage.CheckButton);
         },
 
-        changeWeather: async function(){
+        changeWeather: async function (town) {
             this.click(weatherPage.TownElement);
-            let town = 'Лепель';
             this.click(town);
         }
     });

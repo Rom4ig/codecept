@@ -1,4 +1,3 @@
-
 const restorePage = require('../Pages/restorePage');
 const startPage = require('../Pages/startPage');
 const logger = require('../logger').logger;
