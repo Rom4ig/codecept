@@ -20,7 +20,7 @@
     "allure": "0.0.0",
     "allure-commandline": "^2.13.0",
     "chai": "^4.2.0",
-    "codeceptjs": "^2.4.1",
+    "codeceptjs": "^3.0.0",
     "log4js": "^6.1.0",
     "mocha-junit-reporter": "^1.23.3",
     "webdriver": "^5.18.6",
